@@ -24,7 +24,7 @@ public abstract class SeleniumConfig {
 
     @Before
     public void setup() {
-        driver = getWebDriver("chrome");
+        driver = getWebDriver("firefox");
     }
 
     @Step("закрытие браузера")

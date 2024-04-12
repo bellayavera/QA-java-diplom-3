@@ -14,7 +14,7 @@ public class EnterExitAccountTest extends SeleniumConfig {
     public void createUser(){
         RestAssured.baseURI = "https://stellarburgers.nomoreparties.site";
         String json = "{\"email\": \"test-new-email@yandex.ru\", \"password\": \"1234567\", \"name\": \"Name\"}";
-        Response responseCreate = given()
+        given()
                 .header("Content-type", "application/json")
                 .and()
                 .body(json)
@@ -72,7 +72,6 @@ public class EnterExitAccountTest extends SeleniumConfig {
 
         LoginPage objLoginPage = new LoginPage(driver);
         HomePage objHomePage = new HomePage(driver);
-        ForgotPasswordPage objForgotPasswordPage = new ForgotPasswordPage(driver);
         RegisterPage objRegisterPage = new RegisterPage(driver);
 
         objRegisterPage.enter();

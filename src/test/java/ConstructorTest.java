@@ -12,6 +12,8 @@ public class ConstructorTest extends SeleniumConfig{
         HomePage objHomePage = new HomePage(driver);
 
         objHomePage.waitLoadingHomePageWhenAreNotLogin();
+        objHomePage.clickSectionButton(HomePage.fillingSectionButton);
+        objHomePage.clickSectionButton(HomePage.bunSectionButton);
         Assert.assertTrue(objHomePage.isDisplayedSectionTitle(HomePage.bunSectionTitle));
     }
 
@@ -22,6 +24,7 @@ public class ConstructorTest extends SeleniumConfig{
         HomePage objHomePage = new HomePage(driver);
 
         objHomePage.waitLoadingHomePageWhenAreNotLogin();
+        objHomePage.clickSectionButton(HomePage.fillingSectionButton);
         objHomePage.clickSectionButton(HomePage.sauceSectionButton);
         Assert.assertTrue(objHomePage.isDisplayedSectionTitle(HomePage.sauceSectionTitle));
     }
