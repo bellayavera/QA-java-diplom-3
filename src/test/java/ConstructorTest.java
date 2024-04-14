@@ -12,9 +12,12 @@ public class ConstructorTest extends SeleniumConfig{
         HomePage objHomePage = new HomePage(driver);
 
         objHomePage.waitLoadingHomePageWhenAreNotLogin();
-        objHomePage.clickSectionButton(HomePage.fillingSectionButton);
-        objHomePage.clickSectionButton(HomePage.bunSectionButton);
-        Assert.assertTrue(objHomePage.isDisplayedSectionTitle(HomePage.bunSectionTitle));
+        objHomePage.clickSectionButton(HomePage.fillingSectionButtonInactive);
+        objHomePage.clickSectionButton(HomePage.bunSectionButtonInactive);
+
+        Assert.assertTrue(driver.findElement(HomePage.bunSectionButtonActive).isDisplayed());
+        Assert.assertTrue(driver.findElement(HomePage.sauceSectionButtonInactive).isDisplayed());
+        Assert.assertTrue(driver.findElement(HomePage.fillingSectionButtonInactive).isDisplayed());
     }
 
     @Test
@@ -24,9 +27,11 @@ public class ConstructorTest extends SeleniumConfig{
         HomePage objHomePage = new HomePage(driver);
 
         objHomePage.waitLoadingHomePageWhenAreNotLogin();
-        objHomePage.clickSectionButton(HomePage.fillingSectionButton);
-        objHomePage.clickSectionButton(HomePage.sauceSectionButton);
-        Assert.assertTrue(objHomePage.isDisplayedSectionTitle(HomePage.sauceSectionTitle));
+        objHomePage.clickSectionButton(HomePage.sauceSectionButtonInactive);
+
+        Assert.assertTrue(driver.findElement(HomePage.sauceSectionButtonActive).isDisplayed());
+        Assert.assertTrue(driver.findElement(HomePage.bunSectionButtonInactive).isDisplayed());
+        Assert.assertTrue(driver.findElement(HomePage.fillingSectionButtonInactive).isDisplayed());
     }
 
     @Test
@@ -36,7 +41,12 @@ public class ConstructorTest extends SeleniumConfig{
         HomePage objHomePage = new HomePage(driver);
 
         objHomePage.waitLoadingHomePageWhenAreNotLogin();
-        objHomePage.clickSectionButton(HomePage.fillingSectionButton);
-        Assert.assertTrue(objHomePage.isDisplayedSectionTitle(HomePage.fillingSectionTitle));
+        objHomePage.clickSectionButton(HomePage.sauceSectionButtonInactive);
+        objHomePage.clickSectionButton(HomePage.fillingSectionButtonInactive);
+
+
+        Assert.assertTrue(driver.findElement(HomePage.fillingSectionButtonActive).isDisplayed());
+        Assert.assertTrue(driver.findElement(HomePage.bunSectionButtonInactive).isDisplayed());
+        Assert.assertTrue(driver.findElement(HomePage.sauceSectionButtonInactive).isDisplayed());
     }
 }

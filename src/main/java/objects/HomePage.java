@@ -17,17 +17,17 @@ public class HomePage {
 
     public static final By accountButton = By.xpath(".//a[@href='/account']");
 
-    public static final By bunSectionButton = By.xpath(".//span[text()='Булки']");
+    public static final By bunSectionButtonInactive = By.xpath(".//span[text()='Булки']/parent::div[@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']");
 
-    public static final By sauceSectionButton = By.xpath(".//span[text()='Соусы']");
+    public static final By sauceSectionButtonInactive = By.xpath(".//span[text()='Соусы']/parent::div[@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']");
 
-    public static final By fillingSectionButton = By.xpath(".//span[text()='Начинки']");
+    public static final By fillingSectionButtonInactive = By.xpath(".//div[@class='tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect']/span[text()='Начинки']");
 
-    public static final By bunSectionTitle = By.xpath(".//h2[text()='Булки']");
+    public static final By bunSectionButtonActive = By.xpath(".//span[text()='Булки']/parent::div[contains(@class,'tab_tab_type_current__2BEPc')]");
 
-    public static final By sauceSectionTitle = By.xpath(".//h2[text()='Соусы']");
+    public static final By sauceSectionButtonActive = By.xpath(".//span[text()='Соусы']/parent::div[contains(@class,'tab_tab_type_current__2BEPc')]");
 
-    public static final By fillingSectionTitle = By.xpath(".//h2[text()='Начинки']");
+    public static final By fillingSectionButtonActive = By.xpath(".//div[contains(@class,'tab_tab_type_current__2BEPc')]/span[text()='Начинки']");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
@@ -63,11 +63,5 @@ public class HomePage {
     public void clickSectionButton(By button){
         ((JavascriptExecutor)driver).executeScript("arguments[0].click();", driver.findElement(button));
     }
-
-    @Step("проверка видимости раздела булки, соусы или начинки")
-    public Boolean isDisplayedSectionTitle(By title){
-        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", driver.findElement(title));
-        new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOfElementLocated(title));
-        return driver.findElement(title).isDisplayed();
-    }
 }
+
